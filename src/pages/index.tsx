@@ -4,23 +4,13 @@ import Providers from '~/components/Providers'
 import { usePromptsQuery } from '../lib/viewer.graphql';
 import { Prompt } from '../lib/type-defs.graphqls';
 
-const Index = ({ Component, ctx }) => {
+function Index(props, {Component, pageProps}) {
   // const { data } = usePromptsQuery()
     return (
       <Providers>
-        <Component {...ctx} />
+        <Component {...pageProps} />
       </Providers>
     )
 }
 
-Index.getInitialProps = async ({ Component, ctx }) => {
-  let pageProps = {}
-
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx)
-  }
-
-  return { pageProps }
-}
-
-export default withApollo(Index)
+export default withApollo(Index);

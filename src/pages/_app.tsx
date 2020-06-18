@@ -1,52 +1,28 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import { AppProps, AppContext } from 'next/app'
-import React from "react"
-import Head from "next/head"
-import { ThemeProvider, createGlobalStyle } from "styled-components"
+import * as React from 'react'
+import App from 'next/app'
+import Providers from '~/components/Providers'
+import '~/components/GlobalStyles/theme.css'
 
-export interface ITheme {
-  niceBlack: string;
-}
+class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {}
 
-export interface IThemeWrapper {
-  theme: ITheme;
-}
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
 
-export const theme: ITheme = {
-  niceBlack: "#001F3F",
-}
-
-const GlobalStyle = createGlobalStyle<IThemeWrapper>`
-  body {
-    margin: 0 auto;
-    color: ${props => props.theme.niceBlack}; 
+    return { pageProps }
   }
-`
-const AppComponent = ({ Component, pageProps }: AppProps) => {
-  return (
-    <React.Fragment>
-        <Head>
-          <title>GraphQL Job Board</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </Head>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </React.Fragment>
-  );
-};
 
-AppComponent.getInitialProps = async (appContext: AppContext) => {
-    // const client = buildClient(appContext.ctx);
-    // const { data } = await client.get('/api/users/currentuser');
-    console.log(appContext);
-    let pageProps = {};
-    // if (appContext.Component.getInitialProps) {
-    //   pageProps = await appContext.Component.getInitialProps(appContext.ctx);
-    // }
-  
-    return { pageProps }; // ...data
-  };
+  render() {
+    const { Component, pageProps } = this.props
 
-export default AppComponent;
+    return (
+      <Providers>
+        <Component {...pageProps} />
+      </Providers>
+    )
+  }
+}
+
+export default MyApp
