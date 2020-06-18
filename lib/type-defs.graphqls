@@ -1,9 +1,10 @@
-type User {
+type Prompt {
   id: ID!
-  name: String!
-  status: String!
+  header: String!
+  footer: String!
+  word: String!
 }
 
 type Query {
-  viewer: User!
+  prompts: [Prompt!]!
 }

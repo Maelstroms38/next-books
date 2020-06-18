@@ -1,7 +1,8 @@
-query Viewer {
-  viewer {
+query Prompts {
+  prompts {
     id
-    name
-    status
+    header
+    footer
+    word
   }
 }

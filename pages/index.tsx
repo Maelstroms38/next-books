@@ -1,19 +1,20 @@
-import withApollo from '../lib/with-apollo'
-import Link from 'next/link'
-import { useViewerQuery } from '../lib/viewer.graphql'
+import withApollo from '../lib/with-apollo';
+import { usePromptsQuery } from '../lib/viewer.graphql';
+import { Card } from '../components';
+import { Prompt } from '../lib/type-defs.graphqls';
 
 const Index = () => {
-  const { data } = useViewerQuery()
+  const { data } = usePromptsQuery()
 
   if (data) {
-    const { viewer } = data
+    const { prompts } = data;
     return (
-      <div>
-        You're signed in as {viewer.name} and you're {viewer.status} goto{' '}
-        <Link href="/about">
-          <a>static</a>
-        </Link>{' '}
-        page.
+      <div className="container">
+        <div className="row">
+          {prompts.map((prompt: Prompt) => (
+            <Card {...prompt} key={prompt.id} />
+          ))}
+        </div>
       </div>
     )
   }
