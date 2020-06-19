@@ -1,10 +1,176 @@
-type Prompt {
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type AuthorNode implements Node {
   id: ID!
-  header: String!
-  footer: String!
-  word: String!
+  firstName: String!
+  lastName: String!
+  bookSet(before: String, after: String, first: Int, last: Int): BookNodeConnection
+}
+
+type AuthorNodeConnection {
+  pageInfo: PageInfo!
+  edges: [AuthorNodeEdge]!
+}
+
+type AuthorNodeEdge {
+  node: AuthorNode
+  cursor: String!
+}
+
+input AuthorSerializerInput {
+  id: Int
+  firstName: String!
+  lastName: String!
+}
+
+type BookImageMutation {
+  success: Boolean
+}
+
+type BookImageNode {
+  id: ID!
+  book: BookNode
+  url: String!
+}
+
+input BookMutationInput {
+  id: Int
+  author: AuthorSerializerInput
+  title: String!
+  summary: String!
+  clientMutationId: String
+}
+
+type BookMutationPayload {
+  id: Int
+  author: AuthorNode
+  images: String
+  title: String
+  summary: String
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+type BookNode implements Node {
+  id: ID!
+  title: String!
+  author: AuthorNode
+  summary: String!
+  bookimageSet: [BookImageNode!]
+  reviewSet: [ReviewType!]
+}
+
+type BookNodeConnection {
+  pageInfo: PageInfo!
+  edges: [BookNodeEdge]!
+}
+
+type BookNodeEdge {
+  node: BookNode
+  cursor: String
+}
+
+scalar DateTime
+
+type ErrorType {
+  field: String!
+  messages: [String!]!
+}
+
+scalar GenericScalar
+
+type Mutation {
+  createReview(input: ReviewInputType!): ReviewCreate
+  updateReview(input: ReviewInputType!): ReviewUpdate
+  deleteReview(id: ID!): ReviewDelete
+  userCreate(email: String!, password: String!, username: String!): UserCreate
+  tokenAuth(username: String!, password: String!): ObtainJSONWebToken
+  verifyToken(token: String): Verify
+  refreshToken(token: String): Refresh
+  bookMutation(input: BookMutationInput!): BookMutationPayload
+  bookImageMutation(file: Upload!, id: ID!): BookImageMutation
+}
+
+interface Node {
+  id: ID!
+}
+
+type ObtainJSONWebToken {
+  payload: GenericScalar!
+  refreshExpiresIn: Int!
+  token: String!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
 }
 
 type Query {
-  prompts: [Prompt!]!
+  book(id: ID!): BookNode
+  books(before: String, after: String, first: Int, last: Int, title: String, author_FirstName: String, author_LastName: String): BookNodeConnection
+}
+
+type Refresh {
+  payload: GenericScalar!
+  refreshExpiresIn: Int!
+  token: String!
+}
+
+type ReviewCreate {
+  review: ReviewType
+}
+
+type ReviewDelete {
+  ok: Boolean
+}
+
+input ReviewInputType {
+  id: ID
+  user: ID
+  book: ID
+  comment: String
+  value: Int
+}
+
+type ReviewType {
+  id: ID!
+  book: BookNode!
+  user: UserType!
+  pubDate: DateTime!
+  comment: String!
+  value: Int!
+}
+
+type ReviewUpdate {
+  review: ReviewType
+}
+
+scalar Upload
+
+type UserCreate {
+  user: UserType
+}
+
+type UserType {
+  id: ID!
+  lastLogin: DateTime
+  isSuperuser: Boolean!
+  username: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  isStaff: Boolean!
+  isActive: Boolean!
+  dateJoined: DateTime!
+  reviewSet: [ReviewType!]!
+}
+
+type Verify {
+  payload: GenericScalar!
 }

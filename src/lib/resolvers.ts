@@ -1,11 +1,20 @@
-import { QueryResolvers } from './type-defs.graphqls'
-import { ResolverContext } from './with-apollo'
+import {
+  QueryResolvers,
+  BookNodeConnection,
+  BookNode,
+} from './type-defs.graphqls';
+import { ResolverContext } from './apollo';
+import { books } from '~/config';
 
 const Query: Required<QueryResolvers<ResolverContext>> = {
-  prompts(_parent, _args, _context, _info) {
-    return [{ id: String(1), header: 'Basketball is the best ', word: 'Noun', footer: 'in the world' },
-            { id: String(2), header: 'BBQ at my house! Everyones invited, and its Bring Your Own', word: 'Noun', footer: '' }]
+  book(_parent, args, _context, _info): BookNode {
+    const { id } = args;
+    const { node } = books.edges.find((book) => book.node.id === id);
+    return node;
   },
-}
+  books(_parent, _args, _context, _info): BookNodeConnection {
+    return books;
+  },
+};
 
-export default { Query }
+export default { Query };

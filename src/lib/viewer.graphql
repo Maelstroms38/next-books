@@ -1,8 +1,0 @@
-query Prompts {
-  prompts {
-    id
-    header
-    footer
-    word
-  }
-}

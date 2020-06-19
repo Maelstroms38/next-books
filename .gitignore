@@ -2,3 +2,4 @@
 node_modules
 *.graphql.d.ts
 *.graphqls.d.ts
+.DS_Store

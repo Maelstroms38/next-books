@@ -1,12 +1,11 @@
-import * as React from 'react'
-import { sponsors } from '~/config'
-import Card from '~/components/Card'
-import { Grid, LogoContainer, Logo } from './style'
+import * as React from 'react';
+import Card from '~/components/Card';
+import { Grid, LogoContainer, Logo } from './style';
 
 export default function SponsorGrid() {
   return (
     <Grid>
-      {sponsors.map((sponsor) => (
+      {[].map((sponsor) => (
         <a
           key={sponsor.name}
           href={sponsor.url}
@@ -22,5 +21,5 @@ export default function SponsorGrid() {
         </a>
       ))}
     </Grid>
-  )
+  );
 }

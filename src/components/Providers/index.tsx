@@ -1,11 +1,10 @@
-import * as React from 'react'
-import GlobalStyles from '~/components/GlobalStyles'
-import Fathom from './Fathom'
-import SEO from './SEO'
-import DarkMode from './DarkMode'
+import * as React from 'react';
+import GlobalStyles from '~/components/GlobalStyles';
+import SEO from './SEO';
+import DarkMode from './DarkMode';
 
 interface Props {
-  children?: any
+  children?: any;
 }
 
 export default ({ children }: Props) => {
@@ -13,10 +12,9 @@ export default ({ children }: Props) => {
     <React.Fragment>
       <SEO />
       <DarkMode />
-      <Fathom />
       <GlobalStyles.ResetStyles />
 
       {children}
     </React.Fragment>
-  )
-}
+  );
+};

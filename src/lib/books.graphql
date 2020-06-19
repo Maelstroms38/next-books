@@ -1,0 +1,24 @@
+query Books($title: String) {
+  books(title: $title) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    edges {
+      node {
+        id
+        title
+        summary
+        author {
+          id
+          firstName
+          lastName
+        }
+        bookimageSet {
+          id
+          url
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import * as React from 'react'
-import Link from 'next/link'
-import Logo from '~/components/Logo'
-import { Container, LogoContainer, ButtonRowContainer } from './style'
-import { PrimaryButton, GhostButton } from '../Button'
-import Search from './Search'
+import * as React from 'react';
+import Link from 'next/link';
+import Logo from '~/components/Logo';
+import { Container, LogoContainer, ButtonRowContainer } from './style';
+import { PrimaryButton } from '../Button';
+import Search from './Search';
 
 export default function Header() {
   return (
@@ -21,16 +21,10 @@ export default function Header() {
       <ButtonRowContainer>
         <Link href="/about">
           <a>
-            <GhostButton>About</GhostButton>
-          </a>
-        </Link>
-
-        <Link href="/sponsors">
-          <a style={{ marginLeft: '8px' }}>
-            <PrimaryButton>Sponsor</PrimaryButton>
+            <PrimaryButton>About</PrimaryButton>
           </a>
         </Link>
       </ButtonRowContainer>
     </Container>
-  )
+  );
 }

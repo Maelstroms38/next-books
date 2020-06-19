@@ -1,28 +1,17 @@
-import * as React from 'react'
-import App from 'next/app'
-import Providers from '~/components/Providers'
-import '~/components/GlobalStyles/theme.css'
+import * as React from 'react';
+import { AppProps } from 'next/app';
+import Providers from '~/components/Providers';
+import '~/components/GlobalStyles/theme.css';
+import { useApollo } from '../lib/apollo';
+import { ApolloProvider } from '@apollo/react-hooks';
 
-class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {}
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
-
-    return { pageProps }
-  }
-
-  render() {
-    const { Component, pageProps } = this.props
-
-    return (
-      <Providers>
+export default function App({ Component, pageProps }: AppProps) {
+  const apolloClient = useApollo(pageProps.initialApolloState);
+  return (
+    <Providers>
+      <ApolloProvider client={apolloClient}>
         <Component {...pageProps} />
-      </Providers>
-    )
-  }
+      </ApolloProvider>
+    </Providers>
+  );
 }
-
-export default MyApp
