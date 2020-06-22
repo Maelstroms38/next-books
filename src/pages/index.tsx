@@ -11,9 +11,9 @@ const Home = () => {
   return (
     <Page dataCy="home-view">
       <SectionHeading>
-        <Heading>Podcasts</Heading>
+        <Heading>Books</Heading>
         <Subheading>
-          Level up by listening to podcasts from the best in the industry
+          Diversify your shelves with a curated catalog.
         </Subheading>
       </SectionHeading>
 
@@ -21,7 +21,7 @@ const Home = () => {
 
       <SectionHeading>
         <Heading>Resources</Heading>
-        <Subheading>Curated resources for designers and developers</Subheading>
+        <Subheading>Curated resources, links to fun stuff.</Subheading>
       </SectionHeading>
 
       <ResourcesGrid />

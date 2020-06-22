@@ -11,7 +11,7 @@ const MySearchBox = ({ currentRefinement, refine, onChange }: any) => (
       onChange(e)
       refine(e.target.value)
     }}
-    placeholder="Search for shows and episodes..."
+    placeholder="Search for books and authors..."
     aria-label="Search"
   />
 )

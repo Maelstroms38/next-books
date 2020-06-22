@@ -7,7 +7,7 @@ export default function Footer() {
     <Container>
       <Icons>
         <a
-          href="https://twitter.com/specfm"
+          href="https://twitter.com/mbstroms"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -15,24 +15,16 @@ export default function Footer() {
         </a>
 
         <a
-          href="https://github.com/specfm/spec-next"
+          href="https://github.com/maelstroms38"
           target="_blank"
           rel="noopener noreferrer"
         >
           <Icon glyph="github" />
         </a>
-
-        <a
-          href="https://spectrum.chat/specfm"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon glyph="spectrum-solid" />
-        </a>
       </Icons>
 
       <Description>
-        Copyright {new Date().getFullYear()} Spec Network, Inc.
+        Copyright {new Date().getFullYear()} Michael Stromer.
       </Description>
     </Container>
   )
