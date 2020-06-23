@@ -89,7 +89,7 @@ export const CustomNoticeDescription = styled(NoticeDescription)`
   color: ${(props) => props.color};
 `
 
-export const Grid = styled.div`
+export const Grid = styled.div<{ cols: number }>`
   display: grid;
   grid-template-columns: repeat(${(props) => props.cols}, 1fr);
   grid-gap: 32px;

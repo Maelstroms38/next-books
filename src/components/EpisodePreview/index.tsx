@@ -33,7 +33,7 @@ export default function EpisodePreview(props: Props) {
               }`}
           >
             <a>
-              <Timestamp alt={datestring}>{datestring}</Timestamp>
+              <Timestamp>{datestring}</Timestamp>
             </a>
           </Link>
 

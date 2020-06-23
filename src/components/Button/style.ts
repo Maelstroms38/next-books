@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { hexa } from '../globals'
 import { ButtonSize } from './types'
-import theme from '../ThemeUpdate'
+import theme from '~/components/ThemeUpdate'
 
 const getPadding = (size: ButtonSize) => {
   switch (size) {
@@ -17,20 +17,6 @@ const getPadding = (size: ButtonSize) => {
   }
 }
 
-const getFontSize = (size: ButtonSize) => {
-  switch (size) {
-    case 'small':
-      return '14px'
-    case 'default':
-      return '16px'
-    case 'large':
-      return '18px'
-    default: {
-      return '16px'
-    }
-  }
-}
-
 const base = css`
   -webkit-appearance: none;
   display: flex;
@@ -39,7 +25,7 @@ const base = css`
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  font-size: ${(props) => getFontSize(props.size)};
+  font-size: 16px;
   font-weight: 500;
   white-space: nowrap;
   word-break: keep-all;
@@ -48,10 +34,9 @@ const base = css`
   line-height: 1;
   position: relative;
   text-align: center;
-  padding: ${(props) => getPadding(props.size)};
-  opacity: ${(props) => (props.disabled ? '0.64' : '1')};
-  box-shadow: ${(props) =>
-    props.disabled ? 'none' : `0 1px 2px rgba(0,0,0,0.04)`};
+  padding: 10px 20px;
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 
   &:disabled {
     cursor: not-allowed;
@@ -59,8 +44,7 @@ const base = css`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    box-shadow: ${(props) =>
-    props.disabled ? 'none' : `${theme.shadows.button}`};
+    box-shadow: none;
   }
 
   &:focus {

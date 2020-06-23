@@ -10,7 +10,7 @@ const animation = () =>
     ${donutSpin}
   `
 
-export const Spinner = styled.div`
+export const Spinner = styled.div<{ size: number }>`
   animation: ${animation} 0.8s linear infinite;
   border: ${(props) => props.size / 8}px solid var(--border-primary);
   border-left-color: var(--text-primary);

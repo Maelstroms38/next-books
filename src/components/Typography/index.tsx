@@ -305,7 +305,7 @@ export const img = css`
   border-radius: 4px;
 `
 
-export const LineClamp = styled.span`
+export const LineClamp = styled.span<{ lines: number }>`
   -webkit-line-clamp: ${(props) => props.lines || 1};
   -webkit-box-orient: vertical;
   overflow: hidden;

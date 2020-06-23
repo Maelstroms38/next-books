@@ -18,7 +18,7 @@ export const InlineSvg = styled.svg`
   fill: currentColor;
 `
 
-export const SvgWrapper = styled.div`
+export const SvgWrapper = styled.div<{size: number}>`
   display: inline-block;
   flex: 0 0 ${(props) => (props.size ? `${props.size}px` : '32px')};
   width: ${(props) => (props.size ? `${props.size}px` : '32px')};
@@ -124,7 +124,6 @@ export default function Icon(props: Props) {
         aria-label={glyph}
         viewBox="0 0 32 32"
         preserveAspectRatio="xMidYMid meet"
-        fit
       >
         <title>{glyph}</title>
         <Glyph glyph={glyph} />
