@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {IconContainer} from './style';
+import { IconContainer } from './style';
 
 export default function Logo() {
   return (

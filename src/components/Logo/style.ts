@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const IconContainer = styled.a`
-    display: inline-block;
+    align-self: center;
     margin-right: 1rem;
     font-size: 1.25rem;
     line-height: inherit;

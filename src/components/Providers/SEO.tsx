@@ -3,24 +3,24 @@ import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
 
 const SeoConfig = {
-  title: 'Spec · Level Up',
+  title: 'Libby App',
   description:
-    'Podcasts and resources to help designers and developers level up',
+    'Books and resources for developers ',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://spec.fm',
-    site_name: 'Spec.fm',
+    url: 'https://libby-app.herokuapp.com',
+    site_name: 'Libby App',
     images: [
       {
-        url: 'https://spec.fm/static/og-image.jpg',
+        url: 'https://images.unsplash.com/photo-1546953304-5d96f43c2e94?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
         alt: 'Spec.fm',
       },
     ],
   },
   twitter: {
-    handle: '@specfm',
-    site: '@specfm',
+    handle: '@mbstroms',
+    site: '@mbstroms',
     cardType: 'summary_large_image',
   },
 }

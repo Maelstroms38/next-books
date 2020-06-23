@@ -31,10 +31,10 @@ export default function Search() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <AlgoliaLogo
+            {/* <AlgoliaLogo
               src="/static/img/algolia.svg"
               alt="Search by Algolia"
-            />
+            /> */}
           </a>
         )}
         <InstantSearch searchClient={searchClient} indexName={INDEX}>

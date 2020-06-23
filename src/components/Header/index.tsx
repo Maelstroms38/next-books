@@ -9,11 +9,9 @@ export default function Header() {
   return (
     <Container>
       <Link href="/">
-        <a style={{ display: 'flex', alignItems: 'center' }}>
           <LogoContainer>
             <Logo />
           </LogoContainer>
-        </a>
       </Link>
 
       <Search />
