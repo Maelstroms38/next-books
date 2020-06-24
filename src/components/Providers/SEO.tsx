@@ -9,12 +9,12 @@ const SeoConfig = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://libby-app.herokuapp.com',
+    url: 'https://next-books.vercel.app',
     site_name: 'Libby App',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1546953304-5d96f43c2e94?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
-        alt: 'Spec.fm',
+        url: 'https://next-books.vercel.app/static/og-image.jpg',
+        alt: 'Libby App',
       },
     ],
   },
