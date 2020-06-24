@@ -15,11 +15,11 @@ interface Props {
 export default function BookPage({ id }: Props) {
   const router = useRouter();
 
-  if (router.isFallback) {
+  const { data, loading } = useBookQuery({ variables: { id: id } });
+
+  if (router.isFallback || loading) {
     return <FullscreenLoading />;
   }
-
-  const { data } = useBookQuery({ variables: { id: id } });
 
   React.useEffect(() => {
     if (!data) router.push('/');

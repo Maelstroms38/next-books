@@ -1,12 +1,24 @@
 import * as React from 'react';
+import { useRouter } from 'next/router';
 import Page, { SectionHeading, Heading, Subheading } from '~/components/Page';
 import ResourcesGrid from '~/components/ResourcesGrid';
 import { useBooksQuery, BooksDocument } from '../lib/books.graphql';
 import { initializeApollo } from '../lib/apollo';
 import BooksGrid from '~/components/BooksGrid';
+import FullscreenLoading from '~/components/FullscreenLoading';
 
 const Home = () => {
-  const { data } = useBooksQuery();
+  const { data, loading } = useBooksQuery();
+  const router = useRouter();
+  
+  if (router.isFallback || loading)  {
+    return <FullscreenLoading />
+  }
+
+  React.useEffect(() => {
+    if (!data) router.push('/');
+  }, [router.isFallback]);
+
   const { books } = data!;
   return (
     <Page dataCy="home-view">
