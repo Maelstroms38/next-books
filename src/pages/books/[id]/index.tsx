@@ -35,18 +35,23 @@ export default function BookPage({ id }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params: { id } }) => {
+  const apolloClient = initializeApollo();
+
+  await apolloClient.query({
+    query: BookDocument,
+    variables: { id },
+  });
 
   return {
     props: {
       id,
+      initialApolloState: apolloClient.cache.extract(),
     },
   };
 };
 
 export async function getStaticPaths() {
-  const paths = books.edges.map(({ node }) => ({
-    params: { id: node.id },
-  }));
-
+  // Get the paths we want to pre-render based on books
+  const paths = books.edges.map(({ node }) => `/books/${node.id}`);
   return { paths, fallback: false };
 }

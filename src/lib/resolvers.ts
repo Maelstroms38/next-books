@@ -9,7 +9,7 @@ import { books } from '~/config';
 const Query: Required<QueryResolvers<ResolverContext>> = {
   book(_parent, args, _context, _info): BookNode {
     const { id } = args;
-    const { node } = books.edges.find((book) => book.node.id === id);
+    const { node } = books.edges.find((book) => book.node.id == id);
     if (!node) {
       throw new Error("Book Not Found") 
     }
