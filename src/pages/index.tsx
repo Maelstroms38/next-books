@@ -15,10 +15,6 @@ const Home = () => {
     return <FullscreenLoading />
   }
 
-  React.useEffect(() => {
-    if (!data) router.push('/');
-  }, [router.isFallback]);
-
   const { books } = data!;
   return (
     <Page dataCy="home-view">

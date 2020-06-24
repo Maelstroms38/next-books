@@ -20,11 +20,7 @@ export default function BookPage({ id }: Props) {
   if (router.isFallback || loading) {
     return <FullscreenLoading />;
   }
-
-  React.useEffect(() => {
-    if (!data) router.push('/');
-  }, [router.isFallback]);
-
+  
   const { book } = data;
 
   if (book) {

@@ -13,10 +13,6 @@ export default function BooksPage() {
   if (router.isFallback || loading)  {
     return <FullscreenLoading />
   }
-
-  React.useEffect(() => {
-    if (!data) router.push('/');
-  }, [router.isFallback]);
   
   const { books } = data!;
   return (
