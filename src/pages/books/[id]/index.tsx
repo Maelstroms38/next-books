@@ -35,17 +35,10 @@ export default function BookPage({ id }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params: { id } }) => {
-  const apolloClient = initializeApollo();
-
-  await apolloClient.query({
-    query: BookDocument,
-    variables: { id },
-  });
 
   return {
     props: {
       id,
-      initialApolloState: apolloClient.cache.extract(),
     },
   };
 };
