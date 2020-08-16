@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { connectSearchBox } from 'react-instantsearch-dom'
+// import { connectSearchBox } from 'react-instantsearch-dom'
 import { SearchInput } from './style'
 
 const MySearchBox = ({ currentRefinement, refine, onChange }: any) => (
@@ -16,6 +16,6 @@ const MySearchBox = ({ currentRefinement, refine, onChange }: any) => (
   />
 )
 
-const ConnectedSearchBox = connectSearchBox(MySearchBox)
+// const ConnectedSearchBox = connectSearchBox(MySearchBox)
 
-export default ConnectedSearchBox
+export default MySearchBox
