@@ -1,4 +1,3 @@
-const path = require('path');
 module.exports = {
   webpack(config, options) {
     config.module.rules.push({
@@ -10,11 +9,15 @@ module.exports = {
     config.module.rules.push({
       test: /\.graphqls$/,
       exclude: /node_modules/,
-      use: ['graphql-tag/loader', 'graphql-let/schema/loader'],
-    });
+      use: ['graphql-let/schema/loader'],
+    })
 
-    config.resolve.alias['~'] = path.resolve('./src');
+    config.module.rules.push({
+      test: /\.ya?ml$/,
+      type: 'json',
+      use: 'yaml-loader',
+    })
 
-    return config;
+    return config
   },
 };
